@@ -1,0 +1,16 @@
+{
+  "name": "school-project-mvc",
+  "version": "1.0.0",
+  "description": "Cette structure est réalisée à des fins pédagogiques. Elle est un intermédiaire permettant d'introduire les concepts du framework Laravel sur des bases de développement PHP connu.",
+  "main": "index.js",
+  "scripts": {
+    "sass:watch": "sass ./public/scss/main.scss ./public/css/main.css --watch --no-source-map",
+    "sass:build": "sass ./public/scss/main.scss ./public/css/main.css --no-source-map"
+  },
+  "keywords": [],
+  "author": "Nathan Dubocage, Jérémy Piorun",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.57.1"
+  }
+}
