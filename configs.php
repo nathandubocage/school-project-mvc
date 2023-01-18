@@ -1,6 +1,6 @@
 <?php
 
-$DB_SERVER = getenv("MVC_SERVER") ?: "localhost";
+$DB_SERVER = getenv("MVC_SERVER") ?: "localhost:8889";
 $DB_DATABASE = getenv("MVC_DB") ?: "school_project_mvc";
 $DB_USER = getenv("MVC_USER") ?: "root";
 $DB_PASSWORD = getenv("MVC_TOKEN") ?: "root";
@@ -12,4 +12,3 @@ return array(
     "DB_DSN" => "mysql:host=$DB_SERVER;dbname=$DB_DATABASE;charset=utf8",
     "DEBUG" => $DEBUG
 );
-
