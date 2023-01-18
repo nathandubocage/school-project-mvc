@@ -29,6 +29,6 @@ class GalleryWeb extends WebController
             }
         }
 
-        return Template::render("views/global/gallery.php", ['galleryAll' => $galleryFiltered]);
+        return Template::render("views/gallery/gallery.php", ['galleryAll' => $galleryFiltered]);
     }
 }

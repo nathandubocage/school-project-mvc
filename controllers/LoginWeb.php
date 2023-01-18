@@ -1,4 +1,5 @@
 <?php
+
 namespace controllers;
 
 use controllers\base\WebController;
@@ -19,18 +20,29 @@ class LoginWeb extends WebController
     function index()
     {
         return Template::render(
-            "views/global/login.php",
+            "views/account/login.php",
         );
     }
 
-    function run()
+    function run($username, $password)
     {
-        $this->loginModel->run();
+        $username = htmlspecialchars($username);
+        $password = htmlspecialchars($password);
+        $user = $this->loginModel->run($username, $password);
+
+        if ($user) {
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
+
+            header('location: ../');
+        } else {
+            echo 'Impossible de vous authentifier';
+        }
     }
 
     function logout()
     {
-        session_destroy ();
+        session_destroy();
         header('location: ../');
         exit;
     }

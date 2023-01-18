@@ -28,7 +28,7 @@ class ActorsWeb extends WebController
                 array_push($actorsFiltered[$gallery['title']], $gallery);
             }
         }
-        
-        return Template::render("views/global/actors.php", ["actorsAll" => $actorsFiltered]);
+
+        return Template::render("views/actors/actors.php", ["actorsAll" => $actorsFiltered]);
     }
 }

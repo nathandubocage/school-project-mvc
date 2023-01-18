@@ -1,4 +1,5 @@
 <?php
+
 namespace models;
 
 use models\base\SQL;
@@ -13,7 +14,8 @@ class DBGallery extends SQL
 
     function getGallery()
     {
-        $stmt = $this->getPdo()->prepare("SELECT gallery.picture, movies.id, movies.title 
+        $stmt = $this->getPdo()->prepare(
+            "SELECT gallery.picture, movies.id, movies.title 
             FROM gallery 
             INNER JOIN movies 
             ON gallery.movie_id = movies.id"
@@ -28,5 +30,4 @@ class DBGallery extends SQL
         $stmt->execute([$movieId]);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
-
 }

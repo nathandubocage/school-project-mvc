@@ -1,4 +1,5 @@
 <?php
+
 namespace models;
 
 use models\base\SQL;
@@ -10,24 +11,10 @@ class DBLogin extends SQL
         parent::__construct('users', 'id');
     }
 
-    function run()
+    function run(string $username, string $password)
     {
-        $user_name = $_POST['user_name'];
-        $password = $_POST['password'];
-
-        $stmt = $this->getPdo()->prepare("SELECT * FROM users WHERE username = '$user_name' AND password = '$password'");
-        $stmt->execute();
-        $user = $stmt->fetch();
-
-        if ($user) {
-            session_start ();
-
-            $_SESSION['username'] = $_POST['user_name'];
-            $_SESSION['password'] = $_POST['password'];
-            header ('location: ../');
-        }
-        else {
-            echo '<body onLoad="alert(\'TES QUI?\')">';
-        }
+        $stmt = $this->getPdo()->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+        $stmt->execute([$username, $password]);
+        return $stmt->fetch();
     }
 }

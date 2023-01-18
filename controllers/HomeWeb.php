@@ -9,6 +9,6 @@ class HomeWeb extends WebController
 {
     function home(): string
     {
-        return Template::render("views/global/home.php");
+        return Template::render("views/home/home.php");
     }
 }
