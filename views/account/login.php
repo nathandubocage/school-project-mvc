@@ -1,5 +1,5 @@
 <form method="post" action="login/run">
-    <label for="username">User Name</label>
+    <label for="username">Username</label>
     <input type="text" id="username" name="username"><br><br>
     <label for="password">Password</label>
     <input type="password" id="password" name="password"><br><br>

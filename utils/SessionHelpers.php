@@ -16,20 +16,20 @@ class SessionHelpers
         session_start();
     }
 
-    static function login(mixed $equipe): void
+    static function login(mixed $username): void
     {
-        $_SESSION['LOGIN'] = $equipe;
+        $_SESSION['username'] = $username;
     }
 
     static function logout(): void
     {
-        unset($_SESSION['LOGIN']);
+        unset($_SESSION['username']);
     }
 
     static function getConnected(): mixed
     {
         if (SessionHelpers::isLogin()) {
-            return $_SESSION['LOGIN'];
+            return $_SESSION['username'];
         } else {
             return array();
         }
@@ -37,6 +37,6 @@ class SessionHelpers
 
     static function isLogin(): bool
     {
-        return isset($_SESSION['LOGIN']);
+        return isset($_SESSION['username']);
     }
 }

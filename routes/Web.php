@@ -2,6 +2,7 @@
 
 namespace routes;
 
+use controllers\AccountWeb;
 use controllers\GalleryWeb;
 use controllers\HomeWeb;
 use controllers\MoviesWeb;
@@ -27,10 +28,11 @@ class Web
         $actors = new ActorsWeb();
         Route::Add("/actors", [$actors, "actors"]);
 
-        $login = new LoginWeb();
-        Route::Add('/login', [$login, 'index']);
-        Route::Add('/login/run', [$login, 'run']);
-        Route::Add('/logout', [$login, 'logout']);
+        $account = new AccountWeb();
+        Route::Add('/login', [$account, 'login']);
+        Route::Add('/login/run', [$account, 'login_run']);
+        Route::Add('/logout', [$account, 'logout']);
+        Route::Add('/register', [$account, 'register']);
+        Route::Add('/register/run', [$account, 'register_run']);
     }
 }
-
