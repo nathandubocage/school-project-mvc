@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 18 jan. 2023 à 18:28
+-- Généré le : jeu. 19 jan. 2023 à 18:30
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -50,7 +50,7 @@ INSERT INTO `actors` (`id`, `character`, `picture`, `name`) VALUES
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
-  `created_at` datetime NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
   `content` text NOT NULL,
   `movie_id` int(11) NOT NULL
@@ -61,7 +61,10 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `created_at`, `user_id`, `content`, `movie_id`) VALUES
-(1, '2023-01-15 16:55:41', 1, 'Chouette film !', 1);
+(1, '2023-01-15 16:55:41', 1, 'Chouette film !', 1),
+(2, '2023-01-19 19:16:55', 4, 'Je recommande !\r\n', 1),
+(3, '2023-01-19 19:18:23', 4, 'Je recommande !\r\n', 1),
+(4, '2023-01-19 19:18:51', 4, 'Moi aussi', 1);
 
 -- --------------------------------------------------------
 
@@ -148,6 +151,7 @@ INSERT INTO `movies_actors` (`id`, `movie_id`, `actor_id`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(256) NOT NULL,
+  `role` varchar(5) NOT NULL,
   `password` varchar(256) NOT NULL,
   `email` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -156,8 +160,11 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(1, 'LeNeyt7', 'azerty', 'nathandubocage@gmail.com');
+INSERT INTO `users` (`id`, `username`, `role`, `password`, `email`) VALUES
+(1, 'LeNeyt7', 'ADMIN', 'aq136761fb95857e97998a9c7319b3a64dad6f6726e25', 'nathandubocage@gmail.com'),
+(2, 'nathounet', 'USER', 'aq1f0def3a82ad244950e1305b668478b292129ae0425', 'lol@gmail.com'),
+(3, 'nathan.dubocage@yoozly.com', 'USER', 'aq1d2bf8460034b28ed62cfdc5ee502918e7409abeb25', 'contact.nathandubocage@gmail.com'),
+(4, 'test', 'USER', 'aq136761fb95857e97998a9c7319b3a64dad6f6726e25', 'nathan.dubocage@yoozly.com');
 
 --
 -- Index pour les tables déchargées
@@ -218,7 +225,7 @@ ALTER TABLE `actors`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `gallery`
@@ -242,7 +249,7 @@ ALTER TABLE `movies_actors`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
