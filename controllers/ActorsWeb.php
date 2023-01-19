@@ -20,12 +20,12 @@ class ActorsWeb extends WebController
         $actorsAll = $this->actorsModel->getActors();
         $actorsFiltered = [];
 
-        foreach ($actorsAll as $gallery) {
-            if (isset($actorsFiltered[$gallery['title']])) {
-                array_push($actorsFiltered[$gallery['title']], $gallery);
+        foreach ($actorsAll as $actor) {
+            if (isset($actorsFiltered[$actor['name']])) {
+                array_push($actorsFiltered[$actor['name']], $actor);
             } else {
-                $actorsFiltered[$gallery['title']] = [];
-                array_push($actorsFiltered[$gallery['title']], $gallery);
+                $actorsFiltered[$actor['name']] = [];
+                array_push($actorsFiltered[$actor['name']], $actor);
             }
         }
 

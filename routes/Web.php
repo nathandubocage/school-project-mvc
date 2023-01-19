@@ -7,6 +7,7 @@ use controllers\GalleryWeb;
 use controllers\HomeWeb;
 use controllers\MoviesWeb;
 use controllers\ActorsWeb;
+use controllers\CommentsWeb;
 use controllers\LoginWeb;
 
 use routes\base\Route;
@@ -34,5 +35,8 @@ class Web
         Route::Add('/logout', [$account, 'logout']);
         Route::Add('/register', [$account, 'register']);
         Route::Add('/register/run', [$account, 'register_run']);
+
+        $comments = new CommentsWeb();
+        Route::Add('/comments/add', [$comments, 'add']);
     }
 }

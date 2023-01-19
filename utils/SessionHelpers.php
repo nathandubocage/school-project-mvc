@@ -24,6 +24,7 @@ class SessionHelpers
     static function logout(): void
     {
         unset($_SESSION['username']);
+        unset($_SESSION['id']);
     }
 
     static function getConnected(): mixed
@@ -38,5 +39,10 @@ class SessionHelpers
     static function isLogin(): bool
     {
         return isset($_SESSION['username']);
+    }
+
+    static function isAdmin(): bool
+    {
+        return isset($_SESSION['role']) && $_SESSION['role'] == "ADMIN";
     }
 }

@@ -32,6 +32,8 @@ class AccountWeb extends WebController
 
         if ($user) {
             $_SESSION['username'] = $username;
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['role'] = $user['role'];
             header('location: ../');
         } else {
             echo 'Impossible de vous authentifier';
