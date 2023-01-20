@@ -69,7 +69,7 @@ class MoviesWeb extends WebController
 
     function edit($id, $edit, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary) {
         if ($edit) {
-            $this->movieModel->edit($title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary);
+            $this->movieModel->edit($id, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary);
             header("location: ../");
         } else {
             $currentMovie = $this->movieModel->getOne($id);

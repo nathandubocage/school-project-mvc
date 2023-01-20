@@ -9,7 +9,7 @@
     </head>
     <body>
         <ul>
-            <li><a href="/movies">Liste des films</a></li>
+            <li><a href="/movies/">Liste des films</a></li>
             <li><a href="/gallery">Galerie d'images</a></li>
             <li><a href="/actors">Liste des acteurs</a></li>
 

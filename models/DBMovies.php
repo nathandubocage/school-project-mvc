@@ -23,9 +23,9 @@ class DBMovies extends SQL
         return $stmt->fetch();
     }
 
-    public function edit($title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary) {
-        $stmt = $this->getPdo()->prepare("UPDATE movies SET title = ?, released_at = ?, film_poster = ?, synopsis = ?, banner = ?, trailer = ?, summary = ?");
-        $stmt->execute([$title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary]);
+    public function edit($id, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary) {
+        $stmt = $this->getPdo()->prepare("UPDATE movies SET title = ?, released_at = ?, film_poster = ?, synopsis = ?, banner = ?, trailer = ?, summary = ? WHERE id = ?");
+        $stmt->execute([$title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary, $id]);
         return $stmt->fetch();
     }
 }
