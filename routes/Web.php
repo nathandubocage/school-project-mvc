@@ -27,10 +27,10 @@ class Web
         Route::Add("/movies/{id}", [$movies, "movie"]);
 
         $gallery = new GalleryWeb();
-        Route::Add("/gallery", [$gallery, "gallery"]);
+        Route::Add("/gallery/", [$gallery, "gallery"]);
 
         $actors = new ActorsWeb();
-        Route::Add("/actors", [$actors, "actors"]);
+        Route::Add("/actors/", [$actors, "actors"]);
 
         $account = new AccountWeb();
         Route::Add('/login', [$account, 'login']);

@@ -28,5 +28,13 @@
     <textarea name="summary">Votre message</textarea>
     <br />
 
-    <input type="submit" name="add" value="Ajouter" />
+    <h2>Galerie d'images du film</h2>
+    <small>Vous pouvez ajouter seulement 3 images par site</small> <br /> <br />
+
+    <input type="url" placeholder="Adresse de l'image" name="gallery_1" />
+    <input type="url" placeholder="Adresse de l'image" name="gallery_2" />
+    <input type="url" placeholder="Adresse de l'image" name="gallery_3" />
+    <br /> <br />
+
+    <input type="submit" name="add" value="Ajouter le film" />
 </form>

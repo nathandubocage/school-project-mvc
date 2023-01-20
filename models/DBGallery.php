@@ -30,4 +30,28 @@ class DBGallery extends SQL
         $stmt->execute([$movieId]);
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+    function addPicturesInMovie(string $movieId, array $pictures) 
+    {
+        foreach ($pictures as $picture) {
+            $stmt = $this->getPdo()->prepare("INSERT INTO gallery (movie_id, picture) VALUES (?, ?)");
+            $stmt->execute([$movieId, $picture]);
+            $stmt->fetch();
+        }
+    }
+
+    function editPicturesInMovie(array $picturesToEdit) 
+    {
+        foreach ($picturesToEdit as $id => $pictureToEdit) {
+            $stmt = $this->getPdo()->prepare("UPDATE gallery SET picture = ? WHERE id = ?");
+            $stmt->execute([$pictureToEdit, $id]);
+            $stmt->fetch();
+        }
+    }
+
+    function deletePicturesInMovie(string $id) {
+        $stmt = $this->getPdo()->prepare("DELETE FROM gallery WHERE movie_id = ?");
+        $stmt->execute([$id]);
+        $stmt->fetchAll();
+    }
 }

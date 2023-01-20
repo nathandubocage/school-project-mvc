@@ -14,7 +14,8 @@ class DBMovies extends SQL
     {
         $stmt = $this->getPdo()->prepare("INSERT INTO movies (title, released_at, film_poster, synopsis, banner, trailer, summary) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([$title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary]);
-        return $stmt->fetch();
+        $stmt->fetch();
+        return $this->getPdo()->lastInsertId();
     }
 
     public function delete($movieId) {
