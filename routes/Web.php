@@ -20,7 +20,10 @@ class Web
         Route::Add("/", [$home, "home"]);
 
         $movies = new MoviesWeb();
-        Route::Add("/movies", [$movies, "movies"]);
+        Route::Add("/movies/", [$movies, "movies"]);
+        Route::Add("/movies/add", [$movies, "add"]);
+        Route::Add("/movies/{id}/edit", [$movies, "edit"]);
+        Route::Add("/movies/{id}/delete", [$movies, "delete"]);
         Route::Add("/movies/{id}", [$movies, "movie"]);
 
         $gallery = new GalleryWeb();

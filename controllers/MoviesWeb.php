@@ -40,4 +40,40 @@ class MoviesWeb extends WebController
 
         return Template::render("views/movies/single.php", ["movie" => $movie, "gallery" => $gallery, "comments" => $comments, "actors" => $actors]);
     }
+
+    function add($add, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary) {
+        if (isset($add)) {
+            $title = htmlspecialchars($title);
+            $released_at = htmlspecialchars($released_at);
+            $film_poster = htmlspecialchars($film_poster);
+            $synopsis = htmlspecialchars($synopsis);
+            $banner = htmlspecialchars($banner);
+            $trailer = htmlspecialchars($trailer);
+            $summary = htmlspecialchars($summary);
+
+            if ($released_at == "") {
+                echo "Impossible d'ajouter sans une date valide";
+            } else {
+                $this->movieModel->add($title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary);
+                header('location: ../');
+            }
+        }
+
+        return Template::render("views/movies/add.php");
+    }
+
+    function delete($id) {
+        $this->movieModel->delete($id);
+        header('location: ../');
+    }
+
+    function edit($id, $edit, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary) {
+        if ($edit) {
+            $this->movieModel->edit($title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary);
+            header("location: ../");
+        } else {
+            $currentMovie = $this->movieModel->getOne($id);
+            return Template::render("views/movies/edit.php", ["currentMovie" => $currentMovie]);
+        }
+    }
 }
