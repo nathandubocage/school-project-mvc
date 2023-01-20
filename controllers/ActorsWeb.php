@@ -4,15 +4,18 @@ namespace controllers;
 
 use controllers\base\WebController;
 use models\DBActors;
+use models\DBMovies;
 use utils\Template;
 
 class ActorsWeb extends WebController
 {
     private DBActors $actorsModel;
+    private DBMovies $moviesModel;
 
     function __construct()
     {
         $this->actorsModel = new DBActors();
+        $this->moviesModel = new DBMovies();
     }
 
     function actors(): string
@@ -30,5 +33,56 @@ class ActorsWeb extends WebController
         }
 
         return Template::render("views/actors/actors.php", ["actorsAll" => $actorsFiltered]);
+    }
+
+    function add($add, $name, $character, $picture) {
+        if ($add) {        
+            $formData = $_POST;
+            $movieSelected = [];
+            
+            foreach($formData as $key => $data) {
+                if ($key == "name" || $key == "character" || $key == "picture" || $key == "add") {
+                } else {
+                    $movieSelected[$key] = $data;
+                }
+            }
+
+            $name = htmlspecialchars($name);
+            $character = htmlspecialchars($character);
+            $picture = htmlspecialchars($picture);
+            $actorId = $this->actorsModel->add($name, $character, $picture);
+
+            if (count($movieSelected) > 0) {
+                $this->moviesModel->addActorInMovie($movieSelected, $actorId);
+                header('Location: ../actors/');
+            } else {
+                echo "Il faut sélectionner un film !";
+            }
+
+        } else {
+            $movies = $this->moviesModel->getAll();
+            return Template::render("views/actors/add.php", ["movies" => $movies]);
+        }
+    }
+
+    function edit($id, $edit, $name, $character, $picture) {
+        if ($edit) {
+            $name = htmlspecialchars($name);
+            $character = htmlspecialchars($character);
+            $picture = htmlspecialchars($picture);
+
+            $this->actorsModel->edit($id, $name, $character, $picture);
+            header('Location: ../');
+        } else {
+            $currentActor = $this->actorsModel->getOne($id);
+            $movies = $this->moviesModel->getAll();
+            return Template::render("views/actors/edit.php", ["currentActor" => $currentActor, "movies" => $movies]);
+        }
+    }
+
+    function delete($id) 
+    {
+        $this->actorsModel->delete($id);
+        header("Location: ..");
     }
 }

@@ -29,4 +29,14 @@ class DBMovies extends SQL
         $stmt->execute([$title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary, $id]);
         return $stmt->fetch();
     }
+
+    public function addActorInMovie(array $movies, string $actorId) 
+    {
+        foreach ($movies as $movieId => $value) 
+        {
+            $stmt = $this->getPdo()->prepare("INSERT INTO movies_actors (movie_id, actor_id) VALUES (?, ?)");
+            $stmt->execute([$movieId, $actorId]);
+            $stmt->fetch();
+        }
+    }
 }

@@ -31,6 +31,9 @@ class Web
 
         $actors = new ActorsWeb();
         Route::Add("/actors/", [$actors, "actors"]);
+        Route::Add("/actors/add", [$actors, "add"]);
+        Route::Add("/actors/{id}/edit", [$actors, "edit"]);
+        Route::Add("/actors/{id}/delete", [$actors, "delete"]);
 
         $account = new AccountWeb();
         Route::Add('/login', [$account, 'login']);

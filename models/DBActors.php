@@ -37,4 +37,25 @@ class DBActors extends SQL
         $stmt->execute([$movieId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    function add($name, $character, $picture)
+    {
+        $stmt = $this->getPdo()->prepare("INSERT INTO actors (`name`, `character`, `picture`) VALUES (?, ?, ?)");
+        $stmt->execute([$name, $character, $picture]);
+        $stmt->fetch();
+        return $this->getPdo()->lastInsertId();
+    } 
+
+    function edit($id, $name, $character, $picture)
+    {
+        $stmt = $this->getPdo()->prepare("UPDATE actors SET `character` = ?, `picture` = ?, `name` = ? WHERE id = ?");
+        $stmt->execute([$character, $picture, $name, $id]);
+        $stmt->fetch();
+    } 
+
+    function delete($actorId) {
+        $stmt = $this->getPdo()->prepare("DELETE FROM movies_actors WHERE actor_id = ?");
+        $stmt->execute([$actorId]);
+        $stmt->fetchAll();
+    }
 }
