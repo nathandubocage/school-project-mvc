@@ -34,9 +34,12 @@ echo "</pre>";
 
 <h3>Liste des commentaires</h3>
 <?php
-echo "<pre>";
-print_r($comments);
-echo "</pre>";
+foreach ($comments as $comment) {
+    echo $comment->username;
+    echo $comment->created_at;
+    echo $comment->content;
+    echo "<hr />";
+}
 ?>
 
 <h2>Liste des acteurs</h2>
