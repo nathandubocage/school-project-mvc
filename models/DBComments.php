@@ -15,7 +15,7 @@ class DBComments extends SQL
     function getCommentsByMovieId(string $movieId)
     {
         $stmt = $this->getPdo()->prepare(
-            "SELECT users.username, comments.created_at, comments.content 
+            "SELECT users.username, comments.id as comment_id, comments.user_id as user_id, comments.created_at, comments.content 
             FROM comments  
             INNER JOIN users  
             ON comments.user_id = users.id 
@@ -29,6 +29,13 @@ class DBComments extends SQL
     {
         $stmt = $this->getPdo()->prepare("INSERT INTO comments (user_id, content, movie_id) VALUES (?, ?, ?)");
         $stmt->execute([$userId, $content, $movieId]);
+        return $stmt->fetch();
+    }
+
+    function update($comment_id, $content)
+    {
+        $stmt = $this->getPdo()->prepare("UPDATE comments SET content = ? WHERE id = ?");
+        $stmt->execute([$content,  $comment_id]);
         return $stmt->fetch();
     }
 }

@@ -25,12 +25,22 @@ class SessionHelpers
     {
         unset($_SESSION['username']);
         unset($_SESSION['id']);
+        unset($_SESSION['role']);
     }
 
     static function getConnected(): mixed
     {
         if (SessionHelpers::isLogin()) {
             return $_SESSION['username'];
+        } else {
+            return array();
+        }
+    }
+
+    static function getUserId(): mixed
+    {
+        if (SessionHelpers::isLogin()) {
+            return $_SESSION['id'];
         } else {
             return array();
         }

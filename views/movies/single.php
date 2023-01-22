@@ -35,9 +35,17 @@ echo "</pre>";
 <h3>Liste des commentaires</h3>
 <?php
 foreach ($comments as $comment) {
+
+
     echo $comment->username;
     echo $comment->created_at;
     echo $comment->content;
+
+    if ($comment->user_id == SessionHelpers::getUserId()) {
+        echo "<a href='/movies/1/comments/{$comment->comment_id}/edit'>Éditer</a>";
+        echo "<a href='/movies/1/comments/{$comment->comment_id}/delete'>Supprimer</a>";
+    }
+
     echo "<hr />";
 }
 ?>
