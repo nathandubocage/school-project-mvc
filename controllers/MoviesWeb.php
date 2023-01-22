@@ -7,7 +7,7 @@ use models\DBActors;
 use models\DBMovies;
 use models\DBGallery;
 use models\DBComments;
-
+use utils\SessionHelpers;
 use utils\Template;
 
 class MoviesWeb extends WebController
@@ -17,18 +17,30 @@ class MoviesWeb extends WebController
     private DBComments $commentsModel;
     private DBActors $actorsModel;
 
+    private bool $isAdmin;
+    private bool $isLogin;
+    private $userId;
+
     function __construct()
     {
         $this->movieModel = new DBMovies();
         $this->galleryModel = new DBGallery();
         $this->commentsModel = new DBComments();
         $this->actorsModel = new DBActors();
+
+        $this->isAdmin = SessionHelpers::isAdmin();
+        $this->isLogin = SessionHelpers::isLogin();
+        $this->userId = SessionHelpers::getUserId();
     }
 
     function movies(): string
     {
         $movies = $this->movieModel->getAll();
-        return Template::render("views/movies/list.php", ['movies' => $movies]);
+
+        return Template::render("views/movies/list.php", [
+            'movies' => $movies,
+            'is_admin' => $this->isAdmin
+        ]);
     }
 
     function movie(string $id)
@@ -38,12 +50,23 @@ class MoviesWeb extends WebController
         $comments = $this->commentsModel->getCommentsByMovieId($id);
         $actors = $this->actorsModel->getActorsByMovieId($id);
 
-        return Template::render("views/movies/single.php", ["movie" => $movie, "gallery" => $gallery, "comments" => $comments, "actors" => $actors]);
+        return Template::render("views/movies/single.php", [
+            "movie" => $movie,
+            "gallery" => $gallery,
+            "comments" => $comments,
+            "actors" => $actors,
+            "is_login" => $this->isLogin,
+            "user_id" => $this->userId
+        ]);
     }
 
-    function add($add, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary, $gallery_1, $gallery_2, $gallery_3)
+    function add($add_button, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary, $picture_1, $picture_2, $picture_3)
     {
-        if (isset($add)) {
+        if (!$this->isAdmin) header('location: ../');
+
+        $error = "";
+
+        if (isset($add_button)) {
             $title = htmlspecialchars($title);
             $released_at = htmlspecialchars($released_at);
             $film_poster = htmlspecialchars($film_poster);
@@ -52,28 +75,28 @@ class MoviesWeb extends WebController
             $trailer = htmlspecialchars($trailer);
             $summary = htmlspecialchars($summary);
 
-            $gallery_1 = htmlspecialchars($gallery_1);
-            $gallery_2 = htmlspecialchars($gallery_2);
-            $gallery_3 = htmlspecialchars($gallery_3);
+            $picture_1 = htmlspecialchars($picture_1);
+            $picture_2 = htmlspecialchars($picture_2);
+            $picture_3 = htmlspecialchars($picture_3);
 
             if ($released_at == "") {
-                echo "Impossible d'ajouter sans une date valide";
+                $error = "Il est impossible d'ajouter un film sans date valide";
             } else {
                 $movieId = $this->movieModel->add($title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary);
 
-                if ($gallery_1 != "" || $gallery_2 != "" || $gallery_3 != "") {
+                if ($picture_1 != "" || $picture_2 != "" || $picture_3 != "") {
                     $pictures = [];
 
-                    if ($gallery_1 != "") {
-                        array_push($pictures, $gallery_1);
+                    if ($picture_1 != "") {
+                        array_push($pictures, $picture_1);
                     }
 
-                    if ($gallery_2 != "") {
-                        array_push($pictures, $gallery_2);
+                    if ($picture_2 != "") {
+                        array_push($pictures, $picture_2);
                     }
 
-                    if ($gallery_3 != "") {
-                        array_push($pictures, $gallery_3);
+                    if ($picture_3 != "") {
+                        array_push($pictures, $picture_3);
                     }
 
                     $this->galleryModel->addPicturesInMovie($movieId, $pictures);
@@ -83,18 +106,23 @@ class MoviesWeb extends WebController
             }
         }
 
-        return Template::render("views/movies/add.php");
+        return Template::render("views/movies/add.php", ["error" => $error]);
     }
 
     function delete($id)
     {
+        if (!$this->isAdmin) header('location: ../');
+
+        $this->commentsModel->deleteCommentsByMovieId($id);
+        $this->galleryModel->deletePicturesByMovieId($id);
         $this->movieModel->delete($id);
-        $this->galleryModel->deletePicturesInMovie($id);
         header('location: ../');
     }
 
     function edit($id, $edit, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary, $gallery_1, $gallery_2, $gallery_3, $gallery_1_id, $gallery_2_id, $gallery_3_id)
     {
+        if (!$this->isAdmin) header('location: ../');
+
         if ($edit) {
             $this->movieModel->edit($id, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary);
             $picturesToEdit = [];
@@ -129,8 +157,10 @@ class MoviesWeb extends WebController
         }
     }
 
-    function edit_comment($edit, $id, $comment_id, $content)
+    function edit_comment($edit, $comment_id, $content)
     {
+        if (!($this->isLogin && $this->userId == $comment_id)) header('location: ../');
+
         if ($edit) {
             $content = htmlspecialchars($content);
 
@@ -146,6 +176,8 @@ class MoviesWeb extends WebController
 
     function delete_comment($comment_id)
     {
+        if (!($this->isLogin && $this->userId == $comment_id)) header('location: ../');
+
         $this->commentsModel->deleteOne($comment_id);
         header('location: ../');
     }

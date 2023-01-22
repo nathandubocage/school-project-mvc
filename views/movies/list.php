@@ -1,25 +1,48 @@
-<h1>Liste des films</h1>
+<section class="movies">
+    <div class="container-medium">
+        <h1 class="movies__heading">Liste des films</h1>
 
-<?php
+        <?php
+        if ($is_admin) {
+            echo "<a class='movies__link movies__link--admin' href='/movies/add'>Ajouter un film</a> <br />";
+        }
 
-use utils\SessionHelpers;
+        ?>
 
-if (SessionHelpers::isAdmin()) {
-    echo "<a href='/movies/add'>Ajouter un film</a> <br />";
-}
+        <div class="movies__items">
 
-foreach ($movies as $movie) {
+            <?php
+            foreach ($movies as $movie) {
 
-    if (SessionHelpers::isAdmin()) {
-        echo "<a href='/movies/{$movie->id}/edit'>Éditer</a> <br />";
-        echo "<a href='/movies/{$movie->id}/delete'>Supprimer</a> <br />";
-    }
+                if ($is_admin) {
+                    echo "<div>";
+                    echo "<a class='movies__link movies__link--admin' href='/movies/{$movie->id}/edit'>Éditer</a> <br />";
+                    echo "<a class='movies__link movies__link--admin' href='/movies/{$movie->id}/delete'>Supprimer</a> <br />";
+                    echo "</div>";
+                }
+            ?>
 
-    echo $movie->title . '<br />';
-    $releasedAt = date_create($movie->released_at);
-    echo date_format($releasedAt, 'd m Y') . '<br />';
-    echo $movie->synopsis . '<br />';
-    echo "<a href='/movies/" . $movie->id . "'><img src='$movie->film_poster' alt='' /></a>";
-    echo "<hr />";
-}
-?>
+                <div class="movies__item">
+                    <h2 class="movies__title"><?= $movie->title ?></h2>
+                    <div class="movies__released-at">
+                        <span>Date de sortie : </span>
+                        <?php
+                        $released_at = date_create($movie->released_at);
+                        echo date_format($released_at, 'd/m/Y') . '<br />';
+                        ?>
+                    </div>
+
+                    <p class="movies__synopsis">
+                        <?= $movie->synopsis; ?>
+                    </p>
+
+                    <a href="/movies/<?= $movie->id ?>">
+                        <img class="movies__film-poster" src=<?= $movie->film_poster ?> alt="Image du film" />
+                    </a>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+</section>

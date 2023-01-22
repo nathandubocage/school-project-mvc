@@ -38,4 +38,11 @@ class DBComments extends SQL
         $stmt->execute([$content,  $comment_id]);
         return $stmt->fetch();
     }
+
+    function deleteCommentsByMovieId(string $movieId)
+    {
+        $stmt = $this->getPdo()->prepare("DELETE FROM comments WHERE movie_id = ?");
+        $stmt->execute([$movieId]);
+        $stmt->fetchAll();
+    }
 }

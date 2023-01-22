@@ -2,7 +2,7 @@
 
 <form method="post" action="#">
     <label for="title">Titre du film</label>
-    <input id="title" type="text" name="title" /> 
+    <input id="title" type="text" name="title" />
     <br />
 
     <label for="released_at">Date de sortie</label>
@@ -36,5 +36,7 @@
     <input type="url" placeholder="Adresse de l'image" name="gallery_3" />
     <br /> <br />
 
-    <input type="submit" name="add" value="Ajouter le film" />
+    <input type="submit" name="add_button" value="Ajouter le film" />
 </form>
+
+<?php if ($error != "") echo $error; ?>

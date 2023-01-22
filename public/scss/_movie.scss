@@ -1,0 +1,10 @@
+.movie {
+    &__gallery {
+        display: flex;
+        column-gap: 10px;
+    }
+
+    &__picture {
+        width: 300px;
+    }
+}

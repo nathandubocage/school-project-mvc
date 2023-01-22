@@ -5,6 +5,7 @@ namespace controllers;
 use controllers\base\WebController;
 use models\DBActors;
 use models\DBMovies;
+use utils\SessionHelpers;
 use utils\Template;
 
 class ActorsWeb extends WebController
@@ -12,10 +13,18 @@ class ActorsWeb extends WebController
     private DBActors $actorsModel;
     private DBMovies $moviesModel;
 
+    private bool $isAdmin;
+    private bool $isLogin;
+    private $userId;
+
     function __construct()
     {
         $this->actorsModel = new DBActors();
         $this->moviesModel = new DBMovies();
+
+        $this->isAdmin = SessionHelpers::isAdmin();
+        $this->isLogin = SessionHelpers::isLogin();
+        $this->userId = SessionHelpers::getUserId();
     }
 
     function actors(): string
@@ -37,6 +46,8 @@ class ActorsWeb extends WebController
 
     function add($add, $name, $character, $picture)
     {
+        if (!$this->isAdmin) header('location: ../');
+
         if ($add) {
             $formData = $_POST;
             $movieSelected = [];
@@ -67,6 +78,8 @@ class ActorsWeb extends WebController
 
     function edit($id, $edit, $name, $character, $picture)
     {
+        if (!$this->isAdmin) header('location: ../');
+
         if ($edit) {
             $name = htmlspecialchars($name);
             $character = htmlspecialchars($character);
@@ -110,6 +123,8 @@ class ActorsWeb extends WebController
 
     function delete($id)
     {
+        if ($this->isAdmin) header('location: ../');
+
         $this->actorsModel->delete($id);
         header("Location: ..");
     }

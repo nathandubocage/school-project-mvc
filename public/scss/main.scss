@@ -1,12 +1,5 @@
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  background-color: teal;
-  color: white;
-}
+@import "./base";
+@import "./layout";
+@import "./header";
+@import "./movies";
+@import "./movie";

@@ -31,7 +31,7 @@ class DBGallery extends SQL
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function addPicturesInMovie(string $movieId, array $pictures) 
+    function addPicturesInMovie(string $movieId, array $pictures)
     {
         foreach ($pictures as $picture) {
             $stmt = $this->getPdo()->prepare("INSERT INTO gallery (movie_id, picture) VALUES (?, ?)");
@@ -40,7 +40,7 @@ class DBGallery extends SQL
         }
     }
 
-    function editPicturesInMovie(array $picturesToEdit) 
+    function editPicturesInMovie(array $picturesToEdit)
     {
         foreach ($picturesToEdit as $id => $pictureToEdit) {
             $stmt = $this->getPdo()->prepare("UPDATE gallery SET picture = ? WHERE id = ?");
@@ -49,9 +49,10 @@ class DBGallery extends SQL
         }
     }
 
-    function deletePicturesInMovie(string $id) {
+    function deletePicturesByMovieId(string $movieId)
+    {
         $stmt = $this->getPdo()->prepare("DELETE FROM gallery WHERE movie_id = ?");
-        $stmt->execute([$id]);
+        $stmt->execute([$movieId]);
         $stmt->fetchAll();
     }
 }
