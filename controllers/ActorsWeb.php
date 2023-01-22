@@ -41,7 +41,10 @@ class ActorsWeb extends WebController
             }
         }
 
-        return Template::render("views/actors/actors.php", ["actorsAll" => $actorsFiltered]);
+        return Template::render("views/actors/actors.php", [
+            "actorsAll" => $actorsFiltered,
+            "is_admin" => $this->isAdmin
+        ]);
     }
 
     function add($add, $name, $character, $picture)
