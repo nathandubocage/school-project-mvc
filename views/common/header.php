@@ -14,20 +14,21 @@
     <header class="header">
         <div class="container-medium">
             <nav class="header__nav">
-                <ul class="header__list">
-                    <li class="header__item"><a href="/">Accueil</a></li>
-                    <li class="header__item"><a href="/movies/">Liste des films</a></li>
-                    <li class="header__item"><a href="/gallery/">Galerie d'images</a></li>
-                    <li class="header__item"><a href="/actors/">Liste des acteurs</a></li>
-
-                    <?php
+            <ul class="header__list">
+                <li class="header__item"><a href="/">· Accueil</a></li>
+                <li class="header__item"><a href="/movies/">· Liste des films</a></li>
+                <li class="header__item"><a href="/actors/">· Le casting</a></li>
+                <li class="header__item"><a href="/gallery/">· Galerie d'images</a></li>
+            </ul>
+            <ul class="header__list">
+                <?php
                     if (!isset($_SESSION['username'])) {
-                        echo "<li class='header__item'><a href='/login'>Connexion</a></li><li><a href='/register'>Inscription</a></li>";
+                        echo "<li class='header__item'><a href='/login'>Me connecter</a></li><li><a href='/register'>S'inscrire</a></li>";
                     } else {
-                        echo "<li class='header__item'><a href='/logout'>Déconnexion</a></li>";
+                        echo "<li class='header__item'><a href='/logout'>Me déconnecter</a></li>";
                     }
-                    ?>
-                </ul>
+                ?>
+            </ul>
             </nav>
         </div>
     </header>

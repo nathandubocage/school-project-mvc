@@ -3,3 +3,9 @@
 @import "./header";
 @import "./movies";
 @import "./movie";
+@import "./home/home.scss";
+
+@font-face {
+    font-family: 'PeaceSans';
+    src: url('../fonts/PeaceSans.ttf');
+}
