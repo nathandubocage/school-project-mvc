@@ -52,7 +52,7 @@ class SQL implements IDatabase
      * @param String $id
      * @return \stdClass|null
      */
-    public function getOne(string $id): \stdClass|null
+    public function getOne(string $id)
     {
         $stmt = SQL::getPdo()->prepare("SELECT * FROM {$this->tableName} WHERE {$this->primaryKey} = ? LIMIT 1");
         $stmt->execute([$id]);
