@@ -2,7 +2,7 @@
     <div class="container-medium">
         <h1>Inscription</h1>
 
-        <form method="post" action="register/run">
+        <form method="post" action="/register/run/">
             <label for="username">Username</label>
             <input type="text" id="username" name="username"><br><br>
             <label for="password">Password</label>

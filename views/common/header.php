@@ -22,9 +22,9 @@
 
                     <?php
                     if (!isset($_SESSION['username'])) {
-                        echo "<li class='header__item'><a href='/login'>Connexion</a></li><li><a href='/register'>Inscription</a></li>";
+                        echo "<li class='header__item'><a href='/login/'>Connexion</a></li><li><a href='/register/'>Inscription</a></li>";
                     } else {
-                        echo "<li class='header__item'><a href='/logout'>Déconnexion</a></li>";
+                        echo "<li class='header__item'><a href='/logout/'>Déconnexion</a></li>";
                     }
                     ?>
                 </ul>

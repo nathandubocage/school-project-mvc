@@ -4,7 +4,7 @@
 
         <?php
         if ($is_admin) {
-            echo "<a href='/actors/add'>Ajouter un acteur</a>";
+            echo "<a href='/actors/add/'>Ajouter un acteur</a>";
         }
         foreach ($actorsAll as $name => $actors) {
             echo "<h2>{$name}</h2>";
@@ -12,8 +12,8 @@
                 echo "{$actor['title']} - ";
                 echo "{$actor['character']}";
                 if ($index == 0 && $is_admin) {
-                    echo "<a href='/actors/{$actor['actor_id']}/edit'>Modifier cet acteur</a> ";
-                    echo "<a href='/actors/{$actor['actor_id']}/delete'>Supprimer cet acteur</a>";
+                    echo "<a href='/actors/{$actor['actor_id']}/edit/'>Modifier cet acteur</a> ";
+                    echo "<a href='/actors/{$actor['actor_id']}/delete/'>Supprimer cet acteur</a>";
                 }
                 echo "<hr />";
             }

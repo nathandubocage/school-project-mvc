@@ -1,7 +1,7 @@
 <section class="login">
     <div class="container-medium">
         <h1>Connexion</h1>
-        <form method="post" action="login/run">
+        <form method="post" action="/login/run/">
             <label for="username">Username</label>
             <input type="text" id="username" name="username"><br><br>
             <label for="password">Password</label>
