@@ -1,10 +1,15 @@
 <?php
 
-$DB_SERVER = getenv("MVC_SERVER") ?: "localhost:8889";
-$DB_DATABASE = getenv("MVC_DB") ?: "school_project_mvc";
-$DB_USER = getenv("MVC_USER") ?: "root";
-$DB_PASSWORD = getenv("MVC_TOKEN") ?: "root";
-$DEBUG = getenv("MVC_DEBUG") ?: true;
+echo "<pre>";
+print_r($_SERVER);
+echo "</pre>";
+exit;
+
+$DB_SERVER = $_SERVER['SERVER_NAME'] === 'localhost' ? "localhost:8889" : '127.0.0.1';
+$DB_DATABASE = $_SERVER['SERVER_NAME'] === 'localhost' ? "school_project_mvc" : 'base_ecv_ndubocage';
+$DB_USER = $_SERVER['SERVER_NAME'] === 'localhost' ? 'root' : 'sql_ecv_ndubocage';
+$DB_PASSWORD = $_SERVER['SERVER_NAME'] === 'localhost' ? 'root' : 'yN8Qc8PaZq';
+$DEBUG = $_SERVER['SERVER_NAME'] === 'localhost' ? true : false;
 
 return array(
     "DB_USER" => $DB_USER,
