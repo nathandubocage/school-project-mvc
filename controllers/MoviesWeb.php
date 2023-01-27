@@ -156,29 +156,4 @@ class MoviesWeb extends WebController
             return Template::render("views/movies/edit.php", ["currentMovie" => $currentMovie, "currentGallery" => $currentGallery]);
         }
     }
-
-    function edit_comment($edit, $comment_id, $content)
-    {
-        if (!($this->isLogin && $this->userId == $comment_id)) header('location: ../');
-
-        if ($edit) {
-            $content = htmlspecialchars($content);
-
-            if ($content != "") {
-                $this->commentsModel->update($comment_id, $content);
-                header("location: ../");
-            }
-        }
-
-        $currentComment = $this->commentsModel->getOne($comment_id);
-        return Template::render("views/comments/edit.php", ["currentComment" => $currentComment]);
-    }
-
-    function delete_comment($comment_id)
-    {
-        if (!($this->isLogin && $this->userId == $comment_id)) header('location: ../');
-
-        $this->commentsModel->deleteOne($comment_id);
-        header('location: ../');
-    }
 }
