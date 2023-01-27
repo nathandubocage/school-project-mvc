@@ -1,9 +1,26 @@
 .header {
-    padding: 20px 0;
+  height: 12vh;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    &__list {
-        display: flex;
-        list-style-type: none;
-        column-gap: 10px;
-    }
+  &__nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    font-size: 1.15rem;
+    gap: 2.5rem;
+    width: 50%;
+
+    // &__item{
+
+    // }
+  }
 }
