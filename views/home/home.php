@@ -54,12 +54,12 @@
       </p>
       <div class="actions">
         <button class="button-container secondary">
-          <a href="/register">
+          <a href="/register/">
             M'inscrire
           </a>
         </button>
         <button class="button-container">
-          <a href="/login">
+          <a href="/login/">
             Me connecter
           </a>
         </button>

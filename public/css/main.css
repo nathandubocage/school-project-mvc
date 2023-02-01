@@ -26,6 +26,10 @@ body {
   margin: 0 auto;
 }
 
+body:has(section.home-container, section.login-container) {
+  overflow: hidden;
+}
+
 .button-container {
   position: relative;
   width: 100%;
@@ -39,6 +43,13 @@ body {
   color: var(--background-gradient);
   cursor: pointer;
   filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+}
+.button-container a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .button-container:hover {
   background-color: var(--secondary);
@@ -65,7 +76,6 @@ body {
   letter-spacing: 0.75px;
   background-color: transparent;
   color: var(--white);
-  cursor: pointer;
   padding: 0 1rem;
 }
 .input-container:focus {
@@ -108,7 +118,7 @@ h1.title {
   font-size: 1.15rem;
   gap: 2.5rem;
   width: 100%;
-  margin: 0 16rem;
+  margin: 0 12rem;
 }
 .header__item {
   position: relative;
