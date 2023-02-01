@@ -25,7 +25,7 @@ class DBComments extends SQL
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function addComments(string $movieId, string $userId, string $content)
+    function addComment(string $movieId, string $userId, string $content)
     {
         $stmt = $this->getPdo()->prepare("INSERT INTO comments (user_id, content, movie_id) VALUES (?, ?, ?)");
         $stmt->execute([$userId, $content, $movieId]);

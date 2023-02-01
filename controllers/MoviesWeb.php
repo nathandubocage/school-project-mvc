@@ -46,6 +46,12 @@ class MoviesWeb extends WebController
     function movie(string $id)
     {
         $movie = $this->movieModel->getOne($id);
+
+        if ($movie == null) {
+            header('location: ../../../../');
+            exit;
+        }
+
         $gallery = $this->galleryModel->getGalleryByMovieId($id);
         $comments = $this->commentsModel->getCommentsByMovieId($id);
         $actors = $this->actorsModel->getActorsByMovieId($id);
@@ -62,7 +68,7 @@ class MoviesWeb extends WebController
 
     function add($add_button, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary, $picture_1, $picture_2, $picture_3)
     {
-        if (!$this->isAdmin) header('location: ../');
+        if (!$this->isAdmin) header('location: ../../../../');
 
         $error = "";
 
@@ -111,17 +117,19 @@ class MoviesWeb extends WebController
 
     function delete($id)
     {
-        if (!$this->isAdmin) header('location: ../');
-
-        $this->commentsModel->deleteCommentsByMovieId($id);
-        $this->galleryModel->deletePicturesByMovieId($id);
-        $this->movieModel->delete($id);
-        header('location: ../');
+        if (!$this->isAdmin) {
+            header('location: ../../../../');
+        } else {
+            $this->commentsModel->deleteCommentsByMovieId($id);
+            $this->galleryModel->deletePicturesByMovieId($id);
+            $this->movieModel->delete($id);
+            header('location: ../');
+        }
     }
 
     function edit($id, $edit, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary, $gallery_1, $gallery_2, $gallery_3, $gallery_1_id, $gallery_2_id, $gallery_3_id)
     {
-        if (!$this->isAdmin) header('location: ../');
+        if (!$this->isAdmin) header('location: ../../../../');
 
         if ($edit) {
             $this->movieModel->edit($id, $title, $released_at, $film_poster, $synopsis, $banner, $trailer, $summary);
@@ -155,30 +163,5 @@ class MoviesWeb extends WebController
             $currentGallery = $this->galleryModel->getGalleryByMovieId($id);
             return Template::render("views/movies/edit.php", ["currentMovie" => $currentMovie, "currentGallery" => $currentGallery]);
         }
-    }
-
-    function edit_comment($edit, $comment_id, $content)
-    {
-        if (!($this->isLogin && $this->userId == $comment_id)) header('location: ../');
-
-        if ($edit) {
-            $content = htmlspecialchars($content);
-
-            if ($content != "") {
-                $this->commentsModel->update($comment_id, $content);
-                header("location: ../");
-            }
-        }
-
-        $currentComment = $this->commentsModel->getOne($comment_id);
-        return Template::render("views/comments/edit.php", ["currentComment" => $currentComment]);
-    }
-
-    function delete_comment($comment_id)
-    {
-        if (!($this->isLogin && $this->userId == $comment_id)) header('location: ../');
-
-        $this->commentsModel->deleteOne($comment_id);
-        header('location: ../');
     }
 }

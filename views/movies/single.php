@@ -25,7 +25,7 @@
         <?php if ($is_login) { ?>
             <h3>Formulaire</h3>
 
-            <form action="/comments/add" method="post">
+            <form action="<?= '../../comments/add/'; ?>" method="post">
                 <textarea name="message"></textarea>
                 <input type="hidden" name="movie_id" value=<?= $movie->id ?> />
                 <input type="submit" value="Envoyer" />
@@ -42,8 +42,8 @@
             echo "<hr />";
 
             if ($comment->user_id == $user_id) {
-                echo "<a href='/movies/1/comments/{$comment->comment_id}/edit'>Éditer</a>";
-                echo "<a href='/movies/1/comments/{$comment->comment_id}/delete'>Supprimer</a>";
+                echo "<a href='/comments/{$comment->comment_id}/edit/movies/{$movie->id}/'>Éditer</a>";
+                echo "<a href='/comments/{$comment->comment_id}/delete/movies/{$movie->id}/'>Supprimer</a>";
             }
         }
         ?>

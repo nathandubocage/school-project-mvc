@@ -4,9 +4,8 @@
 
         <?php
         if ($is_admin) {
-            echo "<a class='movies__link movies__link--admin' href='/movies/add'>Ajouter un film</a> <br />";
+            echo "<a class='movies__link movies__link--admin' href='/movies/add/'>Ajouter un film</a> <br />";
         }
-
         ?>
 
         <div class="movies__items">
@@ -16,8 +15,8 @@
 
                 if ($is_admin) {
                     echo "<div>";
-                    echo "<a class='movies__link movies__link--admin' href='/movies/{$movie->id}/edit'>Éditer</a> <br />";
-                    echo "<a class='movies__link movies__link--admin' href='/movies/{$movie->id}/delete'>Supprimer</a> <br />";
+                    echo "<a class='movies__link movies__link--admin' href='/movies/{$movie->id}/edit/'>Éditer</a> <br />";
+                    echo "<a class='movies__link movies__link--admin' href='/movies/{$movie->id}/delete/'>Supprimer</a> <br />";
                     echo "</div>";
                 }
             ?>
@@ -36,7 +35,7 @@
                         <?= $movie->synopsis; ?>
                     </p>
 
-                    <a href="/movies/<?= $movie->id ?>">
+                    <a href="/movies/<?= $movie->id ?>/">
                         <img class="movies__film-poster" src=<?= $movie->film_poster ?> alt="Image du film" />
                     </a>
                 </div>

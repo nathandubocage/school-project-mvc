@@ -1,3 +1,4 @@
+<<<<<<< feat_login_page
 <section class="login-container">
     <div class="left">
         <img class="scene"
@@ -23,6 +24,17 @@
             </label>
             <input class="button-container" name="submit" type="submit" id="submit" value="Je me connecte">
             <a href="/register">Je m'inscris</a>
+=======
+<section class="login">
+    <div class="container-medium">
+        <h1>Connexion</h1>
+        <form method="post" action="/login/run/">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"><br><br>
+            <input name="submit" type="submit" id="submit" value="Login"><br>
+>>>>>>> master
         </form>
     </div>
 </section>

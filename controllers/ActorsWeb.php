@@ -126,7 +126,7 @@ class ActorsWeb extends WebController
 
     function delete($id)
     {
-        if ($this->isAdmin) header('location: ../');
+        if (!$this->isAdmin) header('location: ../');
 
         $this->actorsModel->delete($id);
         header("Location: ..");
