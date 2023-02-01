@@ -22,15 +22,8 @@
             </ul>
             <ul class="header__list">
                 <?php
-<<<<<<< feat_login_page
                     if (isset($_SESSION['username'])) {
                         echo "<li class='header__item'><a href='/logout'>Me déconnecter</a></li>";
-=======
-                    if (!isset($_SESSION['username'])) {
-                        echo "<li class='header__item'><a href='/login/'>Connexion</a></li><li><a href='/register/'>Inscription</a></li>";
-                    } else {
-                        echo "<li class='header__item'><a href='/logout/'>Déconnexion</a></li>";
->>>>>>> master
                     }
                 ?>
             </ul>
