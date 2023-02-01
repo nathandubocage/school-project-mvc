@@ -4,8 +4,22 @@
 @import "./movies";
 @import "./movie";
 @import "./home/home.scss";
+@import "./login/login.scss";
 
 @font-face {
     font-family: 'PeaceSans';
     src: url('../fonts/PeaceSans.ttf');
 }
+
+@font-face {
+    font-family: 'HumanChubby';
+    src: url('../fonts/HumanChubby.ttf');
+}
+
+:root {
+    --background-gradient: #0d1741;
+    --background-gradient-2: #77CAD8;
+    --primary: #f0af3f;
+    --secondary: #fcc66c;
+    --white: #fcfafa;
+  }
