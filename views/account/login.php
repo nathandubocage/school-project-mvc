@@ -12,7 +12,7 @@
             Se connecter
         </h1>
         <p>Bientôt vous serez autour d’un feu de camp en train de déguster de bonnes crottes d’agneaux 🐑🔥</p>
-        <form method="post" action="login/run">
+        <form method="post" action="/login/run/">
             <label for="username">
                 <span>Pseudo</span>
                 <input class="input-container secondary" placeholder="SexyBuzz85" type="text" id="username" name="username">
@@ -22,7 +22,7 @@
                 <input class="input-container secondary" placeholder="*********" type="password" id="password" name="password">
             </label>
             <input class="button-container" name="submit" type="submit" id="submit" value="Je me connecte">
-            <a href="/register">Je m'inscris</a>
+            <a href="/register/">Je m'inscris</a>
         </form>
     </div>
 </section>
