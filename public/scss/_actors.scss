@@ -1,0 +1,32 @@
+.actors {
+  padding: 40px 0;
+
+  &__heading {
+    font-size: 2rem;
+  }
+
+  &__name {
+    margin-top: 20px;
+    font-size: 1.3rem;
+  }
+
+  &__identity {
+    margin-top: 7px;
+    font-size: 0.9rem;
+  }
+
+  &__movies {
+    margin-top: 10px;
+  }
+
+  &__image {
+    width: 200px;
+    margin-top: 20px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

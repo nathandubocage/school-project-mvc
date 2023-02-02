@@ -52,6 +52,38 @@ body:has(section.home-container, section.login-container) {
   }
 }
 
+.button {
+  &--small {
+    width: auto;
+    padding: 20px;
+  }
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.ml-5 {
+  margin-left: 5px;
+}
+
+.mt-u-10 {
+  margin-top: -10px;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.checkbox-container {
+  width: 20px;
+  height: 20px;
+}
+
 .input-container {
   position: relative;
   width: 100%;
