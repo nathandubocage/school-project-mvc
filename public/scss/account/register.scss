@@ -1,0 +1,128 @@
+.register-container {
+    display: flex;
+    flex-direction:column-reverse;
+    height: auto;
+    justify-content: center;
+    gap: 2rem;
+    padding:0 1rem;
+    overflow: hidden;
+   
+    @media (min-width: 1024px) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100vw;
+      height: 88vh;
+    }
+  
+    .right {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      padding:0;
+  
+      @media (min-width: 1024px) {
+        width: 45%;
+        align-items: flex-start;
+        padding: 2rem 0;
+      }
+  
+      p {
+        margin: 0.25rem 0;
+        font-size: 0.9rem;
+        width: 85%;
+        text-align: center;
+  
+        @media (min-width: 1024px) {
+          font-size: 1rem;
+          text-align: left;
+          width: 75%;
+          margin-bottom: 2rem;
+        }
+      }
+  
+      form {
+        margin: 3.25rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: 100%;
+        align-items: center;
+
+        @media (min-width: 1024px) {
+          margin: 0rem 0;
+        }
+  
+        label {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          font-size: .85rem;
+          width: 100%;
+
+          @media (min-width: 1024px) {
+            font-size: 1rem;
+            width: 45%;
+          }
+  
+          span {
+            transition: 0.5s;
+            padding: 0.1rem 0.5rem;
+          }
+        }
+
+        .submit{
+          width: 100%;
+
+          @media (min-width: 1024px) {
+            width: 50%;
+          }
+        }
+  
+        a {
+          font-size: 1rem;
+          width: 100%;
+          text-align: center;
+          opacity: .65;
+
+          @media (min-width: 1024px) {
+            width: 55%;
+          }
+        }
+      }
+    }
+  
+    .left {
+      justify-content: center;
+      align-items: center;
+      object-fit: contain;
+      position: relative;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+  
+      @media (min-width: 1024px) {
+        height: 100%;
+        width: 30%;
+        display: flex;
+      }
+  
+      .scene {
+        width: auto;
+        height: 75%;
+        z-index: 2;
+      }
+  
+      .background {
+        position: absolute;
+        width: 85%;
+        height: auto;
+        aspect-ratio: 1/1;
+        border-radius: 999999px;
+        filter: blur(2.5px);
+      }
+    }
+  }
+  

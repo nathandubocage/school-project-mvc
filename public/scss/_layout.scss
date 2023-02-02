@@ -1,7 +1,11 @@
 .container-medium {
   width: 100%;
-  max-width: 90%;
+  max-width: 95%;
   margin: 0 auto;
+
+  @media (min-width: 1024px) {
+    max-width: 85%;
+  }
 }
 
 body:has(section.home-container, section.login-container) {

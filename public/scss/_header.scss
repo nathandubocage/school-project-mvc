@@ -1,6 +1,6 @@
 .header {
   height: 12vh;
-  padding: 20px 0;
+  padding: 10px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,14 +15,21 @@
     justify-content: space-around;
     align-items: center;
     list-style-type: none;
-    font-size: 1.15rem;
-    gap: 2.5rem;
+    font-size: .75rem;
+    gap: 1rem;
     width: 100%;
-    margin: 0 12rem;
+    margin: 0;
+
+    @media (min-width: 1024px) {
+      margin: 0 6rem;
+      font-size: 1.15rem;
+      gap: 2.5rem;
+    }
   }
 
   &__item {
     position: relative;
+    text-align: center;
     transition: 2s;
     font-family: HumanChubby;
     text-transform: uppercase;
