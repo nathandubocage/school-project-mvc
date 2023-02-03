@@ -264,28 +264,6 @@ h1.title {
   width: 300px;
 }
 
-
-.movie {
-  background-color: var(--background-gradient);
-  width: 100%;
-  height: auto;
-  border: 1px solid transparent;
-}
-.movie__banner-container {
-  position: absolute;
-  top: -1rem;
-  left: 0;
-  height: 60vh;
-  width: 100vw;
-  padding: 0 6rem;
-  overflow: hidden;
-  background-color: var(--background-gradient);
-}
-.movie__banner-item {
-  position: relative;
-  height: 100%;
-  width: 100%;
-
 .actors {
   padding: 40px 0;
 }
@@ -313,8 +291,26 @@ h1.title {
   align-items: center;
 }
 
-.movie__gallery {
-
+.movie {
+  background-color: var(--background-gradient);
+  width: 100%;
+  height: auto;
+  border: 1px solid transparent;
+}
+.movie__banner-container {
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  height: 60vh;
+  width: 100vw;
+  padding: 0 6rem;
+  overflow: hidden;
+  background-color: var(--background-gradient);
+}
+.movie__banner-item {
+  position: relative;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

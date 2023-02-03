@@ -1,5 +1,5 @@
 <?php
-$DB_SERVER = "localhost:3306";
+$DB_SERVER = "localhost:8889";
 $DB_DATABASE = "school_project_mvc";
 $DB_USER = 'root';
 $DB_PASSWORD = 'root';
