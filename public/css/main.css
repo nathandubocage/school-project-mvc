@@ -40,7 +40,7 @@ body:has(section.home-container, section.login-container) {
 
 .button-container {
   position: relative;
-  width: 100%;
+  width: 325px;
   height: 3rem;
   border-radius: 200px;
   border-style: none;
@@ -301,11 +301,17 @@ h1.title {
   position: absolute;
   top: -1rem;
   left: 0;
-  height: 60vh;
+  height: 30vh;
   width: 100vw;
-  padding: 0 6rem;
+  padding: 0 2.5rem;
   overflow: hidden;
   background-color: var(--background-gradient);
+}
+@media (min-width: 1024px) {
+  .movie__banner-container {
+    height: 60vh;
+    padding: 0 6rem;
+  }
 }
 .movie__banner-item {
   position: relative;
@@ -316,12 +322,18 @@ h1.title {
   align-items: center;
 }
 .movie__banner-item .backdropmask {
-  -webkit-box-shadow: inset 80px 10px 80px 20px var(--background-gradient), inset -80px 10px 80px 20px var(--background-gradient), inset -80px -30px -80px 20px var(--background-gradient), inset -80px 10px 80px -20px var(--background-gradient);
-  box-shadow: inset 80px 10px 80px 20px var(--background-gradient), inset -80px 10px 80px 20px var(--background-gradient), inset -80px -30px 80px 20px var(--background-gradient), inset -80px 10px 80px 20px var(--background-gradient);
+  -webkit-box-shadow: inset 30px 2px 30px 5px var(--background-gradient), inset -30px 2px 30px 5px var(--background-gradient), inset -30px -30px -30px 5px var(--background-gradient), inset -30px 2px 30px -5px var(--background-gradient);
+  box-shadow: inset 30px 2px 30px 5px var(--background-gradient), inset -30px 2px 30px 5px var(--background-gradient), inset -30px -30px 30px 5px var(--background-gradient), inset -30px 2px 30px 5px var(--background-gradient);
   height: 100%;
   width: 100%;
   z-index: 100;
   position: absolute;
+}
+@media (min-width: 1024px) {
+  .movie__banner-item .backdropmask {
+    -webkit-box-shadow: inset 80px 10px 80px 20px var(--background-gradient), inset -80px 10px 80px 20px var(--background-gradient), inset -80px -30px -80px 20px var(--background-gradient), inset -80px 10px 80px -20px var(--background-gradient);
+    box-shadow: inset 80px 10px 80px 20px var(--background-gradient), inset -80px 10px 80px 20px var(--background-gradient), inset -80px -30px 80px 20px var(--background-gradient), inset -80px 10px 80px 20px var(--background-gradient);
+  }
 }
 .movie__banner-item img {
   width: 100%;
@@ -331,7 +343,38 @@ h1.title {
 }
 .movie__infos {
   display: flex;
-  margin-top: 48vh;
+  flex-wrap: wrap;
+  margin-top: 15vh;
+  flex-direction: column-reverse;
+}
+@media (min-width: 1024px) {
+  .movie__infos {
+    flex-direction: row;
+    margin-top: 48vh;
+  }
+}
+.movie__infos-item {
+  display: flex;
+  flex-wrap: wrap;
+}
+.movie__infos-item-gallery {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+}
+.movie__infos-item-gallery img {
+  object-fit: cover;
+  width: 200px;
+  height: auto;
+}
+@media (min-width: 1024px) {
+  .movie__infos-item-gallery img {
+    width: 375px;
+    height: auto;
+  }
+}
+.movie__infos-item-actors {
+  width: 100%;
 }
 .movie__infos-item h1 {
   font-size: 4.5rem;
@@ -355,27 +398,38 @@ h1.title {
   margin-top: 2rem;
 }
 .movie__infos-item-trailer iframe {
+  width: 100%;
+  height: auto;
   border: none;
 }
+@media (min-width: 1024px) {
+  .movie__infos-item-trailer iframe {
+    width: 800px;
+    height: 500px;
+  }
+}
 .movie__infos-item:nth-child(1) {
-  width: 35%;
-  display: flex;
+  width: 100%;
   justify-content: center;
+}
+@media (min-width: 1024px) {
+  .movie__infos-item:nth-child(1) {
+    width: 35%;
+  }
 }
 .movie__infos-item:nth-child(1) img {
   object-fit: contain;
   width: auto;
   height: 50vh;
-  border-radius: 8px;
-  border-top: 0.5px solid rgb(255, 255, 255);
-  border-right: 0.5px solid rgba(255, 255, 255, 0.75);
-  border-left: 2px solid rgba(0, 0, 0, 0.65);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.65);
 }
 .movie__infos-item:nth-child(2) {
-  display: flex;
+  width: 100%;
   flex-direction: column;
-  width: 65%;
+}
+@media (min-width: 1024px) {
+  .movie__infos-item:nth-child(2) {
+    width: 65%;
+  }
 }
 
 .gallery {

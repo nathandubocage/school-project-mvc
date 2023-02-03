@@ -1,6 +1,6 @@
 <section class="gallery">
     <div class="container-medium">
-        <h1 class="gallery__heading">Galerie d'images</h1>
+        <h1 class="gallery__heading title">Galerie d'images</h1>
         <?php
         foreach ($galleryAll as $title => $images) {
         ?>
