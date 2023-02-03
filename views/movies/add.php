@@ -29,15 +29,15 @@
         <textarea class="input-container mt-10" name="summary">Votre message</textarea>
         <br />
 
-        <h2>Galerie d'images du film</h2>
+        <h2 class="mt-10">Galerie d'images du film</h2>
         <small>Vous pouvez ajouter seulement 3 images par site</small> <br /> <br />
 
-        <input type="url" placeholder="Adresse de l'image" name="picture_1" />
-        <input type="url" placeholder="Adresse de l'image" name="picture_2" />
-        <input type="url" placeholder="Adresse de l'image" name="picture_3" />
+        <input class="input-container mt-10" type="url" placeholder="Adresse de l'image" name="picture_1" />
+        <input class="input-container mt-10" type="url" placeholder="Adresse de l'image" name="picture_2" />
+        <input class="input-container mt-10" type="url" placeholder="Adresse de l'image" name="picture_3" />
         <br /> <br />
 
-        <input type="submit" name="add_button" value="Ajouter le film" />
+        <input class="button-container" type="submit" name="add_button" value="Ajouter le film" />
     </form>
     <?php if ($error != "") echo $error; ?>
 </section>

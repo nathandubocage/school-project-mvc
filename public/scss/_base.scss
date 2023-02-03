@@ -19,7 +19,7 @@ body {
   background: linear-gradient(110.14deg, #0d1741 18.96%, #77cad8 89.71%);
   color: white;
 
-  &:has(section.movies, section.actors, section.gallery) {
+  &:has(section.movies, section.actors, section.gallery, section.add-actor) {
     height: auto;
   }
 }
