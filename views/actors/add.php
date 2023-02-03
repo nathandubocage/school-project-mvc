@@ -1,5 +1,5 @@
 <section class="add-actor">
-    <h1 class="add-title">Ajouter un acteur</h1>
+    <h1 class="add-title title">Ajouter un acteur</h1>
 
     <form method="post" action="#">
         <input class="input-container" type="text" name="name" placeholder="Nom de l'acteur" /> <br />

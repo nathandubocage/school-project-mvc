@@ -1,5 +1,5 @@
 <section class="add-actor">
-    <h1 class="add-title">Ajouter un film</h1>
+    <h1 class="add-title title">Ajouter un film</h1>
 
     <form method="post" action="#">
         <label class="label-form mt-10"  for="title">Titre du film</label>

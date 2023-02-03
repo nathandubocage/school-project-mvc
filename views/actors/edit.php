@@ -1,5 +1,5 @@
 <section class="add-actor">
-    <h1 class="add-title">Modifier un acteur</h1>
+    <h1 class="add-title title">Modifier un acteur</h1>
 
     <form method="post" action="#">
         <input class="input-container" type="text" name="name" placeholder="Nom de l'acteur" value="<?= $currentActor->name ?>" /> <br />
