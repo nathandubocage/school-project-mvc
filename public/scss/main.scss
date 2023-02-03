@@ -2,25 +2,28 @@
 @import "./layout";
 @import "./header";
 @import "./movies";
+@import "./actors";
 @import "./movie";
+@import "./gallery";
 @import "./home/home.scss";
 @import "./account/login.scss";
 @import "./account/register.scss";
+@import "./admin.scss";
 
 @font-face {
-    font-family: 'PeaceSans';
-    src: url('../fonts/PeaceSans.ttf');
+  font-family: "PeaceSans";
+  src: url("../fonts/PeaceSans.ttf");
 }
 
 @font-face {
-    font-family: 'HumanChubby';
-    src: url('../fonts/HumanChubby.ttf');
+  font-family: "HumanChubby";
+  src: url("../fonts/HumanChubby.ttf");
 }
 
 :root {
-    --background-gradient: #0d1741;
-    --background-gradient-2: #77CAD8;
-    --primary: #f0af3f;
-    --secondary: #fcc66c;
-    --white: #fcfafa;
-  }
+  --background-gradient: #0d1741;
+  --background-gradient-2: #77cad8;
+  --primary: #f0af3f;
+  --secondary: #fcc66c;
+  --white: #fcfafa;
+}

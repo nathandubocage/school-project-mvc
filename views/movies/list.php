@@ -4,7 +4,7 @@
 
         <?php
         if ($is_admin) {
-            echo "<a class='movies__link movies__link--admin' href='/movies/add/'>Ajouter un film</a> <br />";
+            echo "<button class='button-container button--small mt-20'><a class='' href='/movies/add/'>Ajouter un film</a></button>";
         }
         ?>
 
@@ -12,8 +12,8 @@
             <?php
             foreach ($movies as $movie) {
                 if ($is_admin) {
-                    echo "<div>";
-                    echo "<a class='movies__link movies__link--admin' href='/movies/{$movie->id}/edit/'>Éditer</a> <br />";
+                    echo "<div class='movies__actions'>";
+                    echo "<a class='movies__link movies__link--admin mr-10' href='/movies/{$movie->id}/edit/'>Éditer</a> <br />";
                     echo "<a class='movies__link movies__link--admin' href='/movies/{$movie->id}/delete/'>Supprimer</a> <br />";
                     echo "</div>";
                 }
