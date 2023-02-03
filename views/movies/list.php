@@ -1,6 +1,6 @@
 <section class="movies">
     <div class="container-medium">
-        <h1 class="movies__heading">Liste des films</h1>
+        <h1 class="movies__heading title">Liste des films</h1>
 
         <?php
         if ($is_admin) {

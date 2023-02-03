@@ -19,6 +19,7 @@
     gap: 1rem;
     width: 100%;
     margin: 0;
+    z-index: 10000;
 
     @media (min-width: 1024px) {
       margin: 0 6rem;

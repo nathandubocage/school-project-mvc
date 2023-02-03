@@ -27,8 +27,8 @@
     cursor: pointer;
     overflow: hidden;
     display: flex;
-    background-color: white;
-    color: black;
+    border:2px solid var(--secondary);
+    color: var(--white);
     border-radius: 5px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
     transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
@@ -68,9 +68,10 @@
   }
 
   &__released-at {
-    font-size: 1rem;
+    font-size: .80rem;
     font-style: italic;
     margin: 10px 0;
+    opacity: .65;
   }
 
   &__synopsis {
