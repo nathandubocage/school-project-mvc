@@ -1,6 +1,6 @@
 <section class="actors">
     <div class="container-medium">
-        <h1 class="actors__heading">Le casting</h1>
+        <h1 class="actors__heading title">Le casting</h1>
 
         <?php
         if ($is_admin) {
