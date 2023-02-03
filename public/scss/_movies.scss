@@ -27,7 +27,7 @@
     cursor: pointer;
     overflow: hidden;
     display: flex;
-    border:2px solid var(--secondary);
+    border: 2px solid var(--secondary);
     color: var(--white);
     border-radius: 5px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
@@ -55,6 +55,7 @@
     img {
       width: 100%;
       height: 100%;
+      object-fit: contain;
     }
   }
 
@@ -68,10 +69,10 @@
   }
 
   &__released-at {
-    font-size: .80rem;
+    font-size: 0.8rem;
     font-style: italic;
     margin: 10px 0;
-    opacity: .65;
+    opacity: 0.65;
   }
 
   &__synopsis {
